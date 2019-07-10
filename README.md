@@ -17,7 +17,8 @@
 
 #### 三. 联系人实体类
 拿名字曾轶可 拨号盘输入95举例，注意曾是多音字  
-![657b5c2d7c2bb9d8308c4fe4dd193a3d.png](en-resource://database/1219:0)
+![T9拨号盘](https://github.com/tslearner/T9demo/blob/master/doc/t9.png)
+
 
 **联系人SimpleContact**
 
@@ -73,11 +74,13 @@ List<SimpleContact> searchCache,                        
 3. 号码
 若1和2不符合，根据mNumber（号码）匹配输入数字串，若前者包含后者，则号码命中，获取数字串在号码中的起始匹配位置，设为号码类型。
 
-**高亮规则**
+**高亮规则**  
 不管是首字母、全拼还是号码匹配，都必须是连续的，命中首字母则对应的汉字高亮，匹配到几个则几个高亮。
 
 #### 五. 排序算法
+
 *整体的排序优先级是根据各项影响因子来累积权值，根据最终权重大小排个高低。*
+
 影响因子有：
 
 * 联系人匹配类型（首字母匹配、全拼匹配、号码匹配）
@@ -87,6 +90,7 @@ List<SimpleContact> searchCache,                        
 * 通话记录
 * 名字高亮数量
 * T9上的字母顺序
+
 **根据各因子的权值、系数来控制算法的合理性**
 ```java
 private static  int FirstMatch= 20;//首字母匹配初始值
@@ -112,13 +116,14 @@ private static int CharAsciiMax=127;//字母顺序最大值
 
 ```
 
-**详细算法和各因子权值公式**
-![480eb958322d7ab42702721344643924.png](en-resource://database/1217:1)
+**详细算法和各因子权值公式**  
+![排序算法](https://github.com/tslearner/T9demo/blob/master/doc/T9排序算法.png)
 
 
 #### 六. T9Demo工程
-话不多说，直接上工程，包括T9搜索和排序相关的实体和操作类以及一个简陋的界面。
-![99b8f65485290f97a9b25e3c30a7b0a8.png](en-resource://database/1221:0)
+话不多说，直接上工程，包括T9搜索和排序相关的实体和操作类以及一个简陋的界面。  
+![T9工程](https://github.com/tslearner/T9demo/blob/master/doc/t9project.png)
+
 
 **工程链接:**
 https://github.com/tslearner/T9demo
